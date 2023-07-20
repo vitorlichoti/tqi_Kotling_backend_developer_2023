@@ -10,5 +10,8 @@ data class Cart(
 
     @Column(nullable = false)
     @OneToMany(mappedBy = "cart")
-    val productCart: List<ProductCart> = mutableListOf()
+    val productCart: List<ProductCart> = mutableListOf(),
+
+    @Column(nullable = false)
+    val status: Byte
 )
