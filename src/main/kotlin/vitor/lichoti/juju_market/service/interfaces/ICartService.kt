@@ -7,5 +7,7 @@ interface ICartService {
 
     fun findById(id: Long): Cart
 
+    fun findAll(): List<Cart>
+
     fun delete(id: Long): Cart
 }

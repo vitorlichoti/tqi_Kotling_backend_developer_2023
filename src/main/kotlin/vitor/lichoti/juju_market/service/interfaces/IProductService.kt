@@ -7,5 +7,7 @@ interface IProductService {
 
     fun findById(id: Long): Product
 
+    fun findAll(): List<Product>
+
     fun delete(id: Long)
 }

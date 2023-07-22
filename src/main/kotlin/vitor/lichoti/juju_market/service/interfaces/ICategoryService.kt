@@ -7,5 +7,7 @@ interface ICategoryService {
 
     fun findById(id: Long): Category
 
+    fun findAll(): List<Category>
+
     fun delete(id: Long)
 }

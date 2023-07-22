@@ -1,5 +1,6 @@
 package vitor.lichoti.juju_market.entity
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
 
 @Entity
@@ -10,6 +11,7 @@ data class Cart(
 
     @Column(nullable = false)
     @OneToMany(mappedBy = "cart")
+    @JsonIgnore
     val productCart: List<ProductCart> = mutableListOf(),
 
     @Column(nullable = false)

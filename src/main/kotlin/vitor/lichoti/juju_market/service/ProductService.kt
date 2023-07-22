@@ -19,6 +19,10 @@ class ProductService(
         }
     }
 
+    override fun findAll(): List<Product> {
+        return this.productRepository.findAll()
+    }
+
     override fun delete(id: Long) {
         this.productRepository.deleteById(id)
     }
