@@ -20,5 +20,5 @@ data class ProductCart(
     val amount: Int,
 
     @Column(nullable = false)
-    val salePrice: Float,
+    val salePrice: Float
 )

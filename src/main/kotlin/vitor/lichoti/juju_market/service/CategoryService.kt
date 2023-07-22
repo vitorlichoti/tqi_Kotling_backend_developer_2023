@@ -19,5 +19,9 @@ class CategoryService(
         }
     }
 
+    override fun findAll(): List<Category> {
+        return this.categoryRepository.findAll()
+    }
+
     override fun delete(id: Long) = this.categoryRepository.deleteById(id)
 }

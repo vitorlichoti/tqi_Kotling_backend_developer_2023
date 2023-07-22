@@ -1,5 +1,6 @@
 package vitor.lichoti.juju_market.entity
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
 
 @Entity
@@ -12,5 +13,6 @@ data class Category(
     val categoryName: String,
 
     @OneToMany(mappedBy = "category", cascade = [CascadeType.ALL], orphanRemoval = true)
+    @JsonIgnore
     val products: MutableList<Product> = mutableListOf()
 )
