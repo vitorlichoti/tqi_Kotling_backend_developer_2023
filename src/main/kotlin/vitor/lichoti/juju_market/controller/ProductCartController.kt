@@ -15,49 +15,11 @@ import vitor.lichoti.juju_market.service.ProductCartService
 import vitor.lichoti.juju_market.service.ProductService
 
 @RestController @RequestMapping("/api/cart-products") class ProductCartController(
-    private val productCartService: ProductCartService,
-    private val productService: ProductService,
-    private val cartService: CartService
+    private val productCartService: ProductCartService
 ) {
     @PostMapping
     fun saveProductCart(@RequestBody productCartDto: ProductCartDto): String {
-        if (productCartDto.cartId == null) {
-            val cart = Cart(
-                status = 0
-            )
-
-            val savedCart: Cart = this.cartService.save(cart)
-
-            val product: Product = this.productService.findById(productCartDto.productId)
-
-            val subTotal = product.unitPrice * productCartDto.amount
-
-            val productCart = ProductCart(
-                product = product,
-                cart = savedCart,
-                amount = productCartDto.amount,
-                salePrice = subTotal
-            )
-            this.productCartService.save(productCart)
-
-            return "Product add in cart"
-        }
-
-        val product:Product = this.productService.findById(productCartDto.productId)
-
-        val cart: Cart = this.cartService.findById(productCartDto.cartId)
-
-        val subTotal = product.unitPrice * productCartDto.amount
-
-        val productCart = ProductCart(
-            product = product,
-            cart = cart,
-            amount = productCartDto.amount,
-            salePrice = subTotal
-        )
-
-        this.productCartService.save(productCart)
-
+        this.productCartService.save(productCartDto)
         return "Product add in cart"
     }
 
